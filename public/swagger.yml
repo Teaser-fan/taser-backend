@@ -1,0 +1,554 @@
+swagger: '2.0'
+info:
+  description: 'A super cool endpoint for rendering a json list of tracks.'
+  version: '1.0.0'
+  title: 'Taser Backend'
+  license:
+    name: 'Apache 2.0'
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: 'localhost:3000'
+basePath: '/api/v1'
+schemes:
+  - 'http'
+  - 'https'
+paths:
+  /categories:
+    get:
+      tags:
+        - categories
+      summary: Get categories
+      operationId: getCategories
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: limit
+          type: number
+          default: 20
+
+        - in: query
+          name: offset
+          type: number
+          default: 0
+
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: 'Internal server error '
+
+    post:
+      tags:
+        - categories
+      summary: Create category
+      operationId: createCategory
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/createOrUpdateCategory'
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: 'Internal server error '
+
+  '/categories/{categoryId}':
+    get:
+      tags:
+        - categories
+      summary: Get category details
+      operationId: getCategoryById
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: categoryId
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: 'Internal server error '
+
+    patch:
+      tags:
+        - categories
+      summary: Update category
+      operationId: updateCategory
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: categoryId
+          type: string
+          required: true
+
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/createOrUpdateCategory'
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: 'Internal server error '
+
+    delete:
+      tags:
+        - categories
+      summary: Delete category
+      operationId: deleteCategory
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: categoryId
+          type: string
+          required: true
+
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: 'Internal server error '
+          
+  /products:
+    get:
+      tags:
+        - products
+      summary: Get products
+      operationId: getProducts
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: limit
+          type: number
+          default: 20
+
+        - in: query
+          name: offset
+          type: number
+          default: 0
+
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: 'Internal server error '
+
+    post:
+      tags:
+        - products
+      summary: Create product
+      operationId: createProduct
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/createOrUpdateProduct'
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: 'Internal server error '
+
+  '/products/{productId}':
+    get:
+      tags:
+        - products
+      summary: Get product details
+      operationId: getProductsById
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: productId
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: 'Internal server error '
+
+    patch:
+      tags:
+        - products
+      summary: Update product
+      operationId: updateProduct
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: productId
+          type: string
+          required: true
+
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/createOrUpdateProduct'
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: 'Internal server error '
+
+    delete:
+      tags:
+        - products
+      summary: Delete product
+      operationId: deleteProduct
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: productId
+          type: string
+          required: true
+
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: 'Internal server error '
+          
+  /users:
+    get:
+      tags:
+        - users
+      summary: Get users
+      operationId: getUsers
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: limit
+          type: number
+          default: 20
+
+        - in: query
+          name: offset
+          type: number
+          default: 0
+
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: 'Internal server error '
+
+    post:
+      tags:
+        - users
+      summary: Create user
+      operationId: createUser
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/createOrUpdateUser'
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: 'Internal server error '
+
+  '/users/{userId}':
+    get:
+      tags:
+        - users
+      summary: Get user details
+      operationId: getUserById
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: userId
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: 'Internal server error '
+
+    patch:
+      tags:
+        - users
+      summary: Update user
+      operationId: updateUser
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: userId
+          type: string
+          required: true
+
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/createOrUpdateUser'
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: 'Internal server error '
+
+    delete:
+      tags:
+        - users
+      summary: Delete user
+      operationId: deleteUser
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: userId
+          type: string
+          required: true
+
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: 'Internal server error '
+          
+  /orders:
+    get:
+      tags:
+        - orders
+      summary: Get orders
+      operationId: getOrders
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: limit
+          type: number
+          default: 20
+
+        - in: query
+          name: offset
+          type: number
+          default: 0
+
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: 'Internal server error '
+
+    post:
+      tags:
+        - orders
+      summary: Create order
+      operationId: createOrder
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/createOrUpdateOrder'
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: 'Internal server error '
+
+  '/orders/{orderId}':
+    get:
+      tags:
+        - orders
+      summary: Get order details
+      operationId: getOrderById
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: orderId
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: 'Internal server error '
+
+    patch:
+      tags:
+        - orders
+      summary: Update order
+      operationId: updateOrder
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: orderId
+          type: string
+          required: true
+
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/createOrUpdateOrder'
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: 'Internal server error '
+
+    delete:
+      tags:
+        - orders
+      summary: Delete order
+      operationId: deleteOrder
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: orderId
+          type: string
+          required: true
+
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: 'Internal server error '
+
+definitions:
+  createOrUpdateCategory:
+    type: object
+    properties:
+      name:
+        type: string
+    required:
+      - name
+      
+  createOrUpdateProduct:
+    type: object
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+      images:
+        type: array
+        items:
+          type: string
+      category:
+        type: string
+      price:
+        type: number
+      
+    required:
+      - name
+      - description
+      - category
+      - price
+      
+  createOrUpdateUser:
+    type: object
+    properties:
+      firstName:
+        type: string
+      lastName:
+        type: string
+      email:
+        type: string
+      age:
+        type: number
+      password:
+        type: string
+      phoneNumber:
+        type: string
+    required:
+      - firstName
+      - lastName
+      - email
+      - password
+      - phoneNumber
+      
+  createOrUpdateOrder:
+    type: object
+    properties:
+      user:
+        type: string
+      products:
+        type: array
+        items:
+          type: string
+      totalAmount:
+        type: number
+    required:
+      - user
+      - products
+      - totalAmount
+
+  category:
+    type: object
+    properties:
+      name:
+        type: string
+      createdDate:
+        type: string
