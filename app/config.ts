@@ -3,6 +3,8 @@ export interface IConfig {
   dbUri: string;
   secret: string;
   mail: {
+    host: string;
+    port: number;
     user: string;
     password: string;
   };
@@ -11,12 +13,13 @@ export interface IConfig {
 
 export const config: IConfig = {
   port: parseInt(process.env.NODE_PORT, 10) || 3500,
-  dbUri:
-    'mongodb+srv://test:test@teaser-db.mali1.mongodb.net/myFirstDatabase?authSource=admin&replicaSet=atlas-13jsoh-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true',
-  secret: 'dH7qs9QdXo',
+  dbUri: process.env.DB_URI,
+  secret: process.env.SECRET,
   mail: {
-    user: '',
-    password: '',
+    host: 'smtp.mandrillapp.com',
+    port: 587,
+    user: process.env.MAIL_USER,
+    password: process.env.MAIL_PASSWORD,
   },
   baseUrl: 'http://localhost:4200'
 };

@@ -3,6 +3,9 @@ import koaBody from 'koa-body';
 import cors from '@koa/cors';
 import passport from 'koa-passport';
 import { KoaSwaggerUiOptions } from 'koa2-swagger-ui';
+import dotenv from 'dotenv'
+dotenv.config()
+
 type koa2SwaggerUiFunc = (
   config: Partial<KoaSwaggerUiOptions>
 ) => Koa.Middleware;
@@ -19,7 +22,6 @@ import { connectDB } from './database';
 import './passport';
 import './nodemailer';
 const app = new Koa();
-
 connectDB();
 
 app.use(koaBody());

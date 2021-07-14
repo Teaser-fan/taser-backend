@@ -3,6 +3,7 @@ import { categoriesRouter } from './categories';
 import { ordersRouter } from './orders';
 import { productsRouter } from './products';
 import { usersRouter } from './user';
+import { authRouter } from './auth';
 const router: Router = new Router();
 
 router.prefix('/api/v1');
@@ -16,6 +17,8 @@ router.get('/', async (ctx) => (ctx.status = 401));
  * Basic healthcheck
  */
 router.get('/healthcheck', async (ctx) => (ctx.body = 'OK'));
+
+router.use('/auth', authRouter);
 
 router.use('/products', productsRouter);
 

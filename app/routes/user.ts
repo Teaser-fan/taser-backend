@@ -16,21 +16,11 @@ const router: Router = new Router();
 
 router.get('/', passport.authenticate('jwt', { session: false }), getUsers);
 
-router.post('/', createUser);
-
-router.post('/vendor', createVendor);
-
-router.post('/login', loginUser);
-
 router.post(
   '/verify-email',
   passport.authenticate('jwt', { session: false }),
   emailVerification
 );
-
-router.get('/reset-password', resetPassword);
-
-router.patch('/update-password', updatePassword);
 
 router.get(
   '/:id',
