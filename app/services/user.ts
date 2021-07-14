@@ -176,6 +176,6 @@ export async function editPassword(payload: any): Promise<void> {
   }
 
   user.password = encryptPassword(newPassword);
-  user.passwordResetToken = null
+  user.passwordResetToken = null;
   await user.save();
 }

@@ -14,7 +14,7 @@ export const USER_MESSAGES = {
   USER_NOT_FOUND: 'User not found!',
   USER_EXISTS: 'User already exists!',
   INVALID_CREDENTIALS: 'Invalid credentials',
-  INVALID_VERIFICATION_TOKEN: "Invalid verification token"
+  INVALID_VERIFICATION_TOKEN: 'Invalid verification token'
 };
 
 export const ORDER_MESSAGES = {

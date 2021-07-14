@@ -1,15 +1,10 @@
 import Router from 'koa-router';
 import {
   getUsers,
-  createUser,
   getUserById,
   updateUser,
   removeUser,
-  loginUser,
-  createVendor,
   emailVerification,
-  resetPassword,
-  updatePassword,
 } from '../controllers/user';
 import passport from 'koa-passport';
 const router: Router = new Router();

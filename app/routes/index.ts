@@ -4,6 +4,7 @@ import { ordersRouter } from './orders';
 import { productsRouter } from './products';
 import { usersRouter } from './user';
 import { authRouter } from './auth';
+import passport from '../passport';
 const router: Router = new Router();
 
 router.prefix('/api/v1');
@@ -18,14 +19,14 @@ router.get('/', async (ctx) => (ctx.status = 401));
  */
 router.get('/healthcheck', async (ctx) => (ctx.body = 'OK'));
 
-router.use('/auth', authRouter);
+router.use('/auth',authRouter);
 
-router.use('/products', productsRouter);
+router.use('/products', passport.authenticate('jwt', { session: false }), productsRouter);
 
-router.use('/categories', categoriesRouter);
+router.use('/categories', passport.authenticate('jwt', { session: false }),categoriesRouter);
 
-router.use('/orders', ordersRouter);
+router.use('/orders', passport.authenticate('jwt', { session: false }),ordersRouter);
 
-router.use('/users', usersRouter);
+router.use('/users', passport.authenticate('jwt', { session: false }), usersRouter);
 
 export const routes = router.routes();

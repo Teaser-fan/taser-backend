@@ -106,12 +106,12 @@ export async function removeProduct(ctx: ParameterizedContext) {
   }
 }
 
-export async function uploadImage(ctx: ParameterizedContext){
-  try{
-    const url = await getImageUploadUrl()
+export async function uploadImage(ctx: ParameterizedContext) {
+  try {
+    const url = await getImageUploadUrl();
     ctx.status = 200;
     ctx.body = {url};
-  }catch(err){
+  } catch (err) {
     logger.error({ err }, 'Error in productsController->uploadImage');
     ctx.status = err.status || 500;
     ctx.body = {

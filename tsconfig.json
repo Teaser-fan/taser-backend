@@ -6,7 +6,8 @@
     "outDir": "./dist",
     "sourceMap": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports":true
+    "allowSyntheticDefaultImports":true,
+    "skipLibCheck": true
   },
   "types": ["mocha"],
   "include": ["./**/*.ts", "./**/*.js"],

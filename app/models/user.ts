@@ -40,15 +40,15 @@ const UserSchema = new Schema({
     type: String,
     enum: Object.values(USER_TYPES)
   },
-  isVerified:{
+  isVerified: {
     type: Boolean,
     default: false
   },
-  verificationToken:{
+  verificationToken: {
     type: String,
     required: false
   },
-  passwordResetToken:{
+  passwordResetToken: {
     type: String,
     required: false
   }

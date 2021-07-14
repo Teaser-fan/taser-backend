@@ -1,8 +1,8 @@
-FROM node:8.4
+FROM node:latest
 
-WORKDIR /server
+WORKDIR /app
 
-COPY . /server
+COPY . /app
 RUN npm install
 
 EXPOSE 3000

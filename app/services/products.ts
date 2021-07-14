@@ -2,8 +2,6 @@ import { PaginateResult } from 'mongoose';
 import { ErrorResponse } from '../dtos/error-response';
 import { IProduct, IProductDocument, ProductModel } from '../models/products';
 import { PRODUCT_MESSAGES } from '../shared/constants';
-import AWS from 'aws-sdk';
-import { v4 as uuidv4 } from 'uuid';
 
 export async function fetchProducts(
   limit: number,
