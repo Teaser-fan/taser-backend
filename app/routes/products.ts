@@ -7,19 +7,20 @@ import {
   updateProduct,
   uploadImage,
 } from '../controllers/products';
+import passport from '../passport';
 
 const router: Router = new Router();
 
 router.get('/', getProducts);
 
-router.post('/', createProduct);
+router.post('/', passport.authenticate('jwt', { session: false }), createProduct);
 
 router.get('/:id', getProductById);
 
-router.patch('/:id', updateProduct);
+router.patch('/:id', passport.authenticate('jwt', { session: false }), updateProduct);
 
-router.delete('/:id', removeProduct);
+router.delete('/:id', passport.authenticate('jwt', { session: false }), removeProduct);
 
-router.get('/upload/image', uploadImage);
+router.get('/upload/image', passport.authenticate('jwt', { session: false }),uploadImage);
 
 export const productsRouter = router.routes();

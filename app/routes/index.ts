@@ -21,11 +21,11 @@ router.get('/healthcheck', async (ctx) => (ctx.body = 'OK'));
 
 router.use('/auth', authRouter);
 
-router.use('/products', passport.authenticate('jwt', { session: false }), productsRouter);
+router.use('/products', productsRouter);
 
-router.use('/categories', passport.authenticate('jwt', { session: false }),categoriesRouter);
+router.use('/categories', categoriesRouter);
 
-router.use('/orders', passport.authenticate('jwt', { session: false }),ordersRouter);
+router.use('/orders', ordersRouter);
 
 router.use('/users', passport.authenticate('jwt', { session: false }), usersRouter);
 
