@@ -19,7 +19,7 @@ router.get('/', async (ctx) => (ctx.status = 401));
  */
 router.get('/healthcheck', async (ctx) => (ctx.body = 'OK'));
 
-router.use('/auth',authRouter);
+router.use('/auth', authRouter);
 
 router.use('/products', passport.authenticate('jwt', { session: false }), productsRouter);
 
